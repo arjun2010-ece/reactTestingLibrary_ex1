@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import Hello from './components/Hello';
+import Counter from './components/Counter';
+import CounterStorage from './components/CounterStorage';
+import MessageComponent from './components/MessageComponent';
+import Fetch from './components/Fetch';
+
 import './App.css';
 
-function App() {
+const App = () => {
+  const [text, setText] = useState('Login');
+  const changeLogin = () => {
+    setText('Logout')
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <button onClick={() => changeLogin()}>{text}</button>
+       <Hello name='Arjun' />
+       <hr />
+       <MessageComponent />
+       <hr/>
+       <Counter />
+       <hr/>
+       <CounterStorage />
+       <hr/>
+       <Fetch url='https://jsonplaceholder.typicode.com/users' />
     </div>
-  );
+  )
 }
-
 export default App;

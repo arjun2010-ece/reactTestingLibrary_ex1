@@ -1,9 +1,18 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+afterEach(cleanup);
+describe('App', () => { 
+ 
+    it('check button text', () => {
+        const { getByText } = render(<App />);
+        const loginButton = getByText('Login');
+        expect(loginButton.textContent).toBe('Login');
+
+        loginButton.click();
+        expect(loginButton.textContent).toBe('Logout');
+      });
+
 });
+
